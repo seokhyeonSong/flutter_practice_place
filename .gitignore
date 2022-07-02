@@ -118,4 +118,6 @@ lib/generated_plugin_registrant.dart
 # Ignore code-workspaces
 *.code-workspace
 
+# intellij configs
+.idea/
 # End of https://www.toptal.com/developers/gitignore/api/flutter,visualstudiocode,dart

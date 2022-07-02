@@ -120,4 +120,8 @@ lib/generated_plugin_registrant.dart
 
 # intellij configs
 .idea/
+
+# other platform features
+.linux/
+.macos/
 # End of https://www.toptal.com/developers/gitignore/api/flutter,visualstudiocode,dart

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import './add_place_screen.dart';
+import '../providers/great_places.dart';
 
 class PlacesListscreen extends StatelessWidget {
   const PlacesListscreen({Key? key}) : super(key: key);
@@ -9,18 +11,34 @@ class PlacesListscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your places'),
+        title: const Text('Your places'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
             },
           ),
         ],
       ),
-      body: Center(
-        child: CircularProgressIndicator(),
+      body: Consumer<GreatPlaces>(
+        child: const Center(
+          child: Text('Got no places yet, start adding some!'),
+        ),
+        builder: (context, greatPlaces, child) => greatPlaces.items.isEmpty
+            ? child!
+            : ListView.builder(
+                itemCount: greatPlaces.items.length,
+                itemBuilder: (ctx, i) => ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: FileImage(
+                      greatPlaces.items[i].image,
+                    ),
+                  ),
+                  title: Text(greatPlaces.items[i].title),
+                  onTap: () {},
+                ),
+              ),
       ),
     );
   }

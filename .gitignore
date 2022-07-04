@@ -122,6 +122,8 @@ lib/generated_plugin_registrant.dart
 .idea/
 
 # other platform features
-.linux/
-.macos/
+linux/
+macos/
+web/
+windows/
 # End of https://www.toptal.com/developers/gitignore/api/flutter,visualstudiocode,dart

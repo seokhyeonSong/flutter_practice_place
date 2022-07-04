@@ -14,3 +14,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Google Api
+to use Google maps Api update GOOGLE_API_KEY in lib\helpers\location_helper.dart's line 5 with yours

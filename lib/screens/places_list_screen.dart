@@ -24,31 +24,33 @@ class PlacesListscreen extends StatelessWidget {
       body: FutureBuilder(
         future: Provider.of<GreatPlaces>(context, listen: false)
             .fetchAndSetPlaces(),
-        builder: (context, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Consumer<GreatPlaces>(
-                    child: const Center(
-                      child: Text('Got no places yet, start adding some!'),
-                    ),
-                    builder: (context, greatPlaces, child) =>
-                        greatPlaces.items.isEmpty
-                            ? child!
-                            : ListView.builder(
-                                itemCount: greatPlaces.items.length,
-                                itemBuilder: (ctx, i) => ListTile(
-                                  leading: CircleAvatar(
-                                    backgroundImage: FileImage(
-                                      greatPlaces.items[i].image,
-                                    ),
-                                  ),
-                                  title: Text(greatPlaces.items[i].title),
-                                  onTap: () {},
+        builder: (context, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<GreatPlaces>(
+                child: const Center(
+                  child: Text('Got no places yet, start adding some!'),
+                ),
+                builder: (context, greatPlaces, child) =>
+                    greatPlaces.items.isEmpty
+                        ? child!
+                        : ListView.builder(
+                            itemCount: greatPlaces.items.length,
+                            itemBuilder: (ctx, i) => ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: FileImage(
+                                  greatPlaces.items[i].image,
                                 ),
                               ),
-                  ),
+                              title: Text(greatPlaces.items[i].title),
+                              subtitle:
+                                  Text(greatPlaces.items[i].location.address!),
+                              onTap: () {},
+                            ),
+                          ),
+              ),
       ),
     );
   }

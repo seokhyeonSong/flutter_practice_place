@@ -90,6 +90,17 @@ class LocationInputState extends State<LocationInput> {
                 _previewImageUrl!,
                 fit: BoxFit.cover,
                 width: double.infinity,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
               ),
       ),
       Row(
